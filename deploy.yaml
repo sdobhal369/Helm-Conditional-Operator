@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy
+  namespace: training1
+  labels:
+    app: test
+spec:
+{{- if eq .Values.env.data "mydata" }}
+  replicas: {{ .Values.replicaCount }}
+{{ else }}
+  replicas: {{ .Values.OtherReplicaCount }}
+{{- end }}
+
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: container
+        image: bitbull/webserver
