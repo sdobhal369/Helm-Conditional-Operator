@@ -1,15 +1,12 @@
-# Default values for helm-with.
+# Default values for helm-operators.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-hobbies:
-  music: Tum
-  movie: Kyu
-moviesList:
-  - picture
-  - video
-  - snapshots
-  - idk
+replicaCount: 1
+OtherReplicaCount: 3
+
+env:
+  data: mydata
 
 image:
   repository: nginx
@@ -85,3 +82,5 @@ autoscaling:
 nodeSelector: {}
 
 tolerations: []
+
+affinity: {}
